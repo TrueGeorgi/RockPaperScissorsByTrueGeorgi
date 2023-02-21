@@ -15,17 +15,25 @@ public class RockPaperScissors {
         int computerWins = 0;
         int draws = 0;
 
-        while (gamesContinues) {
+        int timesRock = 0;
+        int timesPaper = 0;
+        int timesScissors = 0;
+        int timesPlayed = 0;
 
+        while (gamesContinues) {
+            timesPlayed++;
             System.out.println("Choose rock, paper or scissors: ");
             String playerMove = scanner.nextLine().toLowerCase();
 
             if (playerMove.equals("rock")) {
                 playerMove = rock;
+                timesRock++;
             } else if (playerMove.equals("paper")) {
                 playerMove = paper;
+                timesPaper++;
             } else if (playerMove.equals("scissors")) {
                 playerMove = scissors;
+                timesScissors++;
             } else {
                 System.out.println("Such a move doesn't exist. Try agan");
                 return;
@@ -40,12 +48,15 @@ public class RockPaperScissors {
             switch (computerMoveNumber) {
                 case 1:
                     computerMoveString = rock;
+                    timesRock++;
                     break;
                 case 2:
                     computerMoveString = paper;
+                    timesPaper++;
                     break;
                 case 3:
                     computerMoveString = scissors;
+                    timesScissors++;
                     break;
             }
             System.out.printf("The opponent chose %s.%n", computerMoveString);
@@ -82,5 +93,12 @@ public class RockPaperScissors {
         System.out.printf("You won %d times.%n", playerWins);
         System.out.printf("The game ended as a draw %d times.%n",draws);
         System.out.printf("You lost %d times.%n", computerWins);
+        double percentageRock = timesRock / (timesPlayed * 2.0) * 100;
+        double percentagePaper = timesPaper / (timesPlayed * 2.0) * 100;
+        double percentageScissors = timesScissors / (timesPlayed * 2.0) * 100;
+
+        System.out.printf("Rock was chosen %.2f%% of the time.%n", percentageRock);
+        System.out.printf("Paper was chosen %.2f%% of the time.%n", percentagePaper);
+        System.out.printf("Scissors was chosen %.2f%% of the time.%n", percentageScissors);
     }
 }
