@@ -24,6 +24,9 @@ public class RockPaperScissors {
             timesPlayed++;
             System.out.println("Choose rock, paper or scissors: ");
             String playerMove = scanner.nextLine().toLowerCase();
+            while (!playerMove.equals("rock") && !playerMove.equals("scissors") && !playerMove.equals("paper")) {
+                playerMove = scanner.nextLine().toLowerCase();
+            }
 
             if (playerMove.equals("rock")) {
                 playerMove = rock;
@@ -34,11 +37,8 @@ public class RockPaperScissors {
             } else if (playerMove.equals("scissors")) {
                 playerMove = scissors;
                 timesScissors++;
-            } else {
-                System.out.println("Such a move doesn't exist. Try agan");
-                return;
             }
-
+//file named RockPaperScissors.java
             Random random = new Random();
             int computerMoveNumber = random.nextInt(4);
             while (computerMoveNumber == 0) {
@@ -97,8 +97,8 @@ public class RockPaperScissors {
         double percentagePaper = timesPaper / (timesPlayed * 2.0) * 100;
         double percentageScissors = timesScissors / (timesPlayed * 2.0) * 100;
 
-        System.out.printf("Rock was chosen %.2f%% of the time.%n", percentageRock);
-        System.out.printf("Paper was chosen %.2f%% of the time.%n", percentagePaper);
-        System.out.printf("Scissors was chosen %.2f%% of the time.%n", percentageScissors);
+        System.out.printf("Rock was chosen %d times (%.2f%%)%n",timesRock, percentageRock);
+        System.out.printf("Paper was chosen %d times (%.2f%%)%n",timesPaper, percentagePaper);
+        System.out.printf("Scissors was chosen %d times (%.2f%%)%n",timesScissors, percentageScissors);
     }
 }
